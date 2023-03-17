@@ -1,16 +1,13 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.11;
+pragma solidity 0.8.17;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interface.sol";
 import "@chainlink/contracts/src/v0.8/VRFConsumerBaseV2.sol";
 
-abstract contract RandomNumbers is VRFConsumerBaseV2 {
-    
-}
-
 /// @title Lottery
-contract Lottery is Ownable{
+contract Lottery is Ownable, VRFConsumerBaseV2{
     ///@dev array with addresses of all players
     address payable[] public players;
     uint tickets = 4;
