@@ -15,7 +15,7 @@ contract Lottery is Ownable{
     address payable[] public players;
     uint tickets = 4;
     ///@notice cost of tickets
-    uint cost = 5 ether;
+    uint cost = 100 wei;
     uint i;
 
 
@@ -27,6 +27,7 @@ contract Lottery is Ownable{
         return players;
     }
 
+    ///@dev use chainlink for random numbers
     function random(uint _number) public view returns(uint){
         return uint(keccak256(abi.encodePacked(block.timestamp, block.prevrandao, msg.sender))) % _number;
     }
@@ -39,6 +40,6 @@ contract Lottery is Ownable{
     }
 
     function chooseWinner() external onlyOwner {
-        
+                
     }
 }
